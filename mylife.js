@@ -4,24 +4,26 @@ var permbox = 0;
 window.onscroll = scroller;
 $(document).ready(function(){
 	$(window).on('resize', function(){
-		if(window.innerWidth < 600){
-			$("#mylife li").each(function(i, val){
-				if(i % 2 != 0){
-					$(val).css("right", "");
-					$(val).css("left", -permbox);
-				}
-			})
-		}
-		if(window.innerWidth >= 600){
-			$("#mylife li").each(function(i, val){
-				if(i % 2 != 0){
-					$(val).css("left", "");
-					$(val).css("right", -permbox);
-				}
-			})
-		}
-	})
+		checksize();
+		scroller();
+	});
 });
+function checksize(){
+	if(window.innerWidth < 600){
+			$("#mylife li").each(function(i, val){
+					$(val).removeClass().addClass("mlleftout");
+			})
+	} else {
+			$("#mylife li").each(function(i, val){
+				if(i % 2 != 0){
+					$(val).removeClass().addClass("mlrightout");
+				} else {
+					$(val).removeClass().addClass("mlleftout");
+				}				
+	});
+	}
+	
+}
 function createmylife(context){
 var lineheight = context.lineheight;
 var branchrad = context.branchrad;
@@ -29,6 +31,7 @@ var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
 permbox = boxwidth;
 var boxheight = $("#mylife").find("li").eq(0).outerHeight();
 eachmoment(lineheight, branchrad, boxwidth, boxheight);
+checksize();
 }
 
 function eachmoment(lineheight, branchrad, boxwidth, boxheight){
@@ -52,7 +55,7 @@ function eachmoment(lineheight, branchrad, boxwidth, boxheight){
 	}
 	trunks(i, lineheight, branchrad);
 	branches(i, lineheight, branchrad, boxheight);
-	positionli(i, lineheight, branchrad, boxwidth);
+	positionli(i, lineheight, branchrad, boxwidth, boxheight);
 	//alert("");
 	
 });
@@ -65,23 +68,22 @@ setInterval(function() {
     if(didScroll) {
         didScroll = false;
         var offset = $(window).scrollTop();
-		console.log(offset);
 	 $("#mylife li").each(function(i, val){
 		if(offset > (parseInt($(val).css("top"))-100)){
-			if(i % 2 == 0){
-				$(val).css("left", "10%");
-			} else {
-				$(val).css("right", "10%");
+			if($(val).hasClass("mlleftout")){
+				$(val).removeClass().addClass("mlleftin");
 			}
-			
+			if($(val).hasClass("mlrightout")){
+				$(val).removeClass().addClass("mlrightin");
+			}
 		}
 		if(offset < (parseInt($(val).css("top")))){
-			if(i % 2 == 0){
-				$(val).css("left", -(permbox));
-			} else {
-				$(val).css("right", -(permbox));
+			if($(val).hasClass("mlleftin")){
+				$(val).removeClass().addClass("mlleftout");
 			}
-			
+			if($(val).hasClass("mlrightin")){
+				$(val).removeClass().addClass("mlrightout");
+			}	
 		}
 	 });
     }
@@ -120,17 +122,13 @@ function branches(i, lineheight, branchrad, boxheight){
 	console.log("BOXHEIGHT:"+boxheight);
 	$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(branchrad*4)+boxheight));
 }
-function positionli(i, lineheight, branchrad, boxwidth){
+function positionli(i, lineheight, branchrad, boxwidth, boxheight){
 	var curli = $("#mylife").find("li").eq(i);
-	if(i % 2 == 0){
-		$(curli).addClass("mlleftout");
-	} else{
-		$(curli).addClass("mlrightout");
-	}
+	checksize();
 	if(i == 0){
-		$(curli).css("top", ((topt)));
+		$(curli).css("top", ((topt)-(boxheight/2.5)));
 	} else {
-		$(curli).css("top", (topt));
+		$(curli).css("top", ((topt)-(boxheight/2.5)));
 	}
 	
 }
