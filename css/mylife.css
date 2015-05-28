@@ -1,0 +1,32 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+#mylife {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin-top: 10px; }
+  #mylife ul {
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    -webkit-padding-start: 0px;
+    list-style-type: none;
+    position: relative; }
+  #mylife li {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    border: 1px solid black; }
+  #mylife svg {
+    width: 60px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto; }
+
+/*# sourceMappingURL=mylife.css.map */
