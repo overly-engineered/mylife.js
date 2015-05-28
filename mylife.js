@@ -1,11 +1,18 @@
 var topt = 0;
+var didScroll = false;
+var permbox = 0;
+window.onscroll = scroller;
+
 function createmylife(context){
 var lineheight = context.lineheight;
 var branchrad = context.branchrad;
-eachmoment(lineheight, branchrad);
+var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
+permbox = boxwidth;
+var boxheight = $("#mylife").find("li").eq(0).outerHeight();
+eachmoment(lineheight, branchrad, boxwidth, boxheight);
 }
 
-function eachmoment(lineheight, branchrad){
+function eachmoment(lineheight, branchrad, boxwidth, boxheight){
 	$("#mylife li").each(function(i, val){
 	if(i == 0){
 		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -25,12 +32,41 @@ function eachmoment(lineheight, branchrad){
 	$("#lifeline").append(topper);
 	}
 	trunks(i, lineheight, branchrad);
-	branches(i, lineheight, branchrad);
-	positionli(i, lineheight, branchrad);
+	branches(i, lineheight, branchrad, boxheight);
+	positionli(i, lineheight, branchrad, boxwidth);
 	//alert("");
 	
 });
 }
+function scroller() {
+    didScroll = true;
+}
+
+setInterval(function() {
+    if(didScroll) {
+        didScroll = false;
+        var offset = $(window).scrollTop();
+		console.log(offset);
+	 $("#mylife li").each(function(i, val){
+		if(offset > (parseInt($(val).css("top"))-100)){
+			if(i % 2 == 0){
+				$(val).css("left", "20%");
+			} else {
+				$(val).css("right", "20%");
+			}
+			
+		}
+		if(offset < (parseInt($(val).css("top")))){
+			if(i % 2 == 0){
+				$(val).css("left", -(permbox));
+			} else {
+				$(val).css("right", -(permbox));
+			}
+			
+		}
+	 });
+    }
+}, 250);
 
 function trunks(i, lineheight, branchrad){
 	var trunk = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -49,9 +85,8 @@ function trunks(i, lineheight, branchrad){
 	trunk.setAttribute("fill", "none");
 	$("#lifeline").append(trunk);
 	topt = parseInt(trunk.getAttribute("y2"));
-	console.log(topt);
 }
-function branches(i, lineheight, branchrad){
+function branches(i, lineheight, branchrad, boxheight){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 	branch.setAttribute("id", "branch"+i);
 	branch.setAttribute("cx", "30");
@@ -63,17 +98,20 @@ function branches(i, lineheight, branchrad){
 	branch.setAttribute("fill", "none");
 	$("#lifeline").append(branch);
 	$("#lifeline").css("height", (parseInt(branch.getAttribute("cy")))+(branchrad*4));
-	$("#mylife").css("height", (parseInt(branch.getAttribute("cy")))+(branchrad*4));
+	console.log("BOXHEIGHT:"+boxheight);
+	$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(branchrad*4)+boxheight));
 }
-function positionli(i, lineheight, branchrad){
+function positionli(i, lineheight, branchrad, boxwidth){
 	var curli = $("#mylife").find("li").eq(i);
 	if(i % 2 == 0){
-		$(curli).css("right", "0");
+		$(curli).css("left", -(boxwidth));
+	} else{
+		$(curli).css("right", -(boxwidth));
 	}
 	if(i == 0){
-		$(curli).css("top", (topt-((branchrad+(branchrad/2)))));
+		$(curli).css("top", ((topt)));
 	} else {
-		$(curli).css("top", (topt-((branchrad+(branchrad/2)))));
+		$(curli).css("top", (topt));
 	}
 	
 }
