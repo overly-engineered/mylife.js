@@ -31,4 +31,72 @@
     margin-left: auto;
     margin-right: auto; }
 
+@media handheld, screen and (min-width: 1300px) {
+  #mylife li {
+    height: 400px;
+    width: 500px; } }
+@media handheld, screen and (max-width: 1300px) {
+  #mylife li {
+    height: 400px;
+    width: 450px; } }
+@media handheld, screen and (max-width: 1200px) {
+  #mylife li {
+    height: 400px;
+    width: 400px; } }
+@media handheld, screen and (max-width: 1100px) {
+  #mylife li {
+    height: 400px;
+    width: 350px; } }
+@media handheld, screen and (max-width: 1000px) {
+  #mylife li {
+    height: 400px;
+    width: 300px; } }
+@media handheld, screen and (max-width: 900px) {
+  #mylife li {
+    height: 400px;
+    width: 275px; } }
+@media handheld, screen and (max-width: 800px) {
+  #mylife li {
+    height: 400px;
+    width: 200px; } }
+@media handheld, screen and (max-width: 600px) {
+  #mylife li {
+    height: 400px;
+    width: 350px; }
+  #mylife svg {
+    right: 0;
+    left: 80%; } }
+@media handheld, screen and (max-width: 500px) {
+  #mylife li {
+    height: 400px;
+    width: 300px; }
+  #mylife svg {
+    right: 0;
+    left: 80%; } }
+@media handheld, screen and (max-width: 400px) {
+  #mylife li {
+    height: 400px;
+    width: 250px; }
+  #mylife svg {
+    right: 0;
+    left: 80%; } }
+@media handheld, screen and (max-width: 350px) {
+  #mylife li {
+    height: 400px;
+    width: 200px; }
+  #mylife svg {
+    right: 0;
+    left: 80%; } }
+.mlleftout {
+  left: -100%; }
+
+.mlrightout {
+  right: -100%; }
+
+.mlleftin {
+  left: 10%; }
+
+.mlrightout {
+  right: 10%; }
+
 /*# sourceMappingURL=mylife.css.map */

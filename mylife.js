@@ -2,7 +2,26 @@ var topt = 0;
 var didScroll = false;
 var permbox = 0;
 window.onscroll = scroller;
-
+$(document).ready(function(){
+	$(window).on('resize', function(){
+		if(window.innerWidth < 600){
+			$("#mylife li").each(function(i, val){
+				if(i % 2 != 0){
+					$(val).css("right", "");
+					$(val).css("left", -permbox);
+				}
+			})
+		}
+		if(window.innerWidth >= 600){
+			$("#mylife li").each(function(i, val){
+				if(i % 2 != 0){
+					$(val).css("left", "");
+					$(val).css("right", -permbox);
+				}
+			})
+		}
+	})
+});
 function createmylife(context){
 var lineheight = context.lineheight;
 var branchrad = context.branchrad;
@@ -50,9 +69,9 @@ setInterval(function() {
 	 $("#mylife li").each(function(i, val){
 		if(offset > (parseInt($(val).css("top"))-100)){
 			if(i % 2 == 0){
-				$(val).css("left", "20%");
+				$(val).css("left", "10%");
 			} else {
-				$(val).css("right", "20%");
+				$(val).css("right", "10%");
 			}
 			
 		}
@@ -104,9 +123,9 @@ function branches(i, lineheight, branchrad, boxheight){
 function positionli(i, lineheight, branchrad, boxwidth){
 	var curli = $("#mylife").find("li").eq(i);
 	if(i % 2 == 0){
-		$(curli).css("left", -(boxwidth));
+		$(curli).addClass("mlleftout");
 	} else{
-		$(curli).css("right", -(boxwidth));
+		$(curli).addClass("mlrightout");
 	}
 	if(i == 0){
 		$(curli).css("top", ((topt)));
