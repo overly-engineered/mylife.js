@@ -30,6 +30,12 @@ var branchrad = context.branchrad;
 var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
 permbox = boxwidth;
 var boxheight = $("#mylife").find("li").eq(0).outerHeight();
+if(boxheight > lineheight){
+	boxheight = lineheight;
+	$("#mylife li").each(function(i, val){
+			$(val).css("height", boxheight);
+	});
+}
 eachmoment(lineheight, branchrad, boxwidth, boxheight);
 checksize();
 }
@@ -67,7 +73,12 @@ function scroller() {
 setInterval(function() {
     if(didScroll) {
         didScroll = false;
-        var offset = $(window).scrollTop();
+		reposition();
+    }
+}, 250);
+
+function reposition(){
+	    var offset = $(window).scrollTop();
 	 $("#mylife li").each(function(i, val){
 		if(offset > (parseInt($(val).css("top"))-100)){
 			if($(val).hasClass("mlleftout")){
@@ -86,8 +97,7 @@ setInterval(function() {
 			}	
 		}
 	 });
-    }
-}, 250);
+}
 
 function trunks(i, lineheight, branchrad){
 	var trunk = document.createElementNS("http://www.w3.org/2000/svg", "line");
