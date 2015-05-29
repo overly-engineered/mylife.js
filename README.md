@@ -2,7 +2,8 @@
 
 An animated timeline for showing off the best of your work.
 
-See the code pen demo <a href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a>
+See the code pen demo <a target="_blank" href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a>
+<a id="mylifefeatures" class="anchor" href="#mylifefeatures" aria-hidden="true">Click here for Features</a>
 
 Fully responsive.
 
@@ -40,14 +41,15 @@ Then add the script. Be sure to include jquery before this.
 	createmylife();
 </script>
 ```
-or with options if you want a more customised feel:
+<a id="mylifefeatures" class="anchor" href="#mylifefeatures" aria-hidden="true">Features:</a>
+A more customised feel with options:
 ```
 <script>
 	createmylife({
 		lineheight : 400, // distance between branches default is 300
 		branchrad : 20, // branchradius default is 20
 		branchwidth : 5, // branch thickness default is 4
-		branchtype : "arrow", // branch type. currently "circle" or "arrow" default is "circle"
+		branchtype : "arrow", // branch type. currently "circle", "arrow" or "date"(see below for extra markup) default is "circle"
 		branchfill : "#fff", // fill color for branches default is none
 		treecolor : "#fff", // tree color default is #181818
 		treewidth : 5, // tree width default is 4
@@ -56,6 +58,17 @@ or with options if you want a more customised feel:
 </script>
 ```
 
+
+
+For Date Branch use the "data-date" attr in your markup
+This
+```
+<li><div class="frost"></div><span>1</span></li>
+```
+Becomes
+```
+<li data-date="05/05/1991"><div class="frost"></div><span>1</span></li>
+```
 CSS and SCSS files included use whatever takes your fancy.
 
 Minified files to come.
