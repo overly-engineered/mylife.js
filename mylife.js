@@ -135,7 +135,8 @@ function reposition(){
 	if(animation == true){
 		var offset = $(window).scrollTop();
 		 $("#mylife li").each(function(i, val){
-			if(offset > (parseInt($(val).css("top"))-100)){
+			 console.log(offset);
+			if((offset + 400) > ($(val).offset().top)){
 				if($(val).hasClass("mlleftout")){
 					$(val).removeClass().addClass("mlleftin");
 				}
@@ -143,7 +144,7 @@ function reposition(){
 					$(val).removeClass().addClass("mlrightin");
 				}
 			}
-			if(offset < (parseInt($(val).css("top")))){
+			if((offset +400) < (parseInt($(val).css("top")))){
 				if($(val).hasClass("mlleftin")){
 					$(val).removeClass().addClass("mlleftout");
 				}
