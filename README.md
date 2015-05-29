@@ -50,7 +50,7 @@ A more customised feel with options:
 		branchfill : "#fff", // fill color for branches default is none
 		treecolor : "#fff", // tree color default is #181818
 		treewidth : 5, // tree width default is 4
-		animation : true // disable slide in animations default is on
+		animation : true // disable slide in animations default is true
 	});
 </script>
 ```

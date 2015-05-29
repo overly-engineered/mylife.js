@@ -135,7 +135,6 @@ function reposition(){
 	if(animation == true){
 		var offset = $(window).scrollTop();
 		 $("#mylife li").each(function(i, val){
-			 console.log(offset);
 			if((offset + 400) > ($(val).offset().top)){
 				if($(val).hasClass("mlleftout")){
 					$(val).removeClass().addClass("mlleftin");
