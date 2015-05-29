@@ -2,7 +2,7 @@
 padding:0; box-sizing:border-box;}
 #mylife{
 	width:100%; height:100%; position:relative;
-	margin-top:10px; overflow:hidden;
+    overflow:hidden;
 	background:
     linear-gradient(25deg, hsla(352, 96%, 45%, 1) 0%, hsla(352, 96%, 45%, 0) 70%),
     linear-gradient(85deg, hsla(253, 95%, 42%, 1) 10%, hsla(253, 95%, 42%, 0) 80%),
@@ -17,7 +17,18 @@ padding:0; box-sizing:border-box;}
 		list-style-type:none;
 		position:relative;
 	}
-	li{position:absolute; transition:all 1s;
+	li{position:absolute; 
+	transition:all 1s;
+	}
+	li:nth-child(odd){
+		-webkit-box-shadow: -5px 10px 47px -15px rgba(24,24,24,1);
+		-moz-box-shadow: -5px 10px 47px -15px rgba(24,24,24,1);
+		box-shadow: -5px 10px 47px -15px rgba(24,24,24,1);
+	}
+	li:nth-child(even){
+		-webkit-box-shadow: 5px 10px 47px -15px rgba(24,24,24,1);
+		-moz-box-shadow: 5px 10px 47px -15px rgba(24,24,24,1);
+		box-shadow: 5px 10px 47px -15px rgba(24,24,24,1);
 	}
 	li .frost{
 		height:100%;
@@ -29,7 +40,7 @@ padding:0; box-sizing:border-box;}
 		-ms-filter: blur(2px);
 		filter: blur(2px);
 		opacity: 0.2;
-		border:1px solid black;
+		border:1px solid #181818;
 	}
 	li span{
 		opacity:1;

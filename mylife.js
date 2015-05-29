@@ -1,46 +1,97 @@
 var topt = 0;
 var didScroll = false;
 var permbox = 0;
+var animation;
+var doneload = false;
 window.onscroll = scroller;
 $(document).ready(function(){
 	$(window).on('resize', function(){
 		checksize();
 		scroller();
+		if(doneload == true){
+			swaparrows();
+		}
 	});
 });
 function checksize(){
-	if(window.innerWidth < 600){
-			$("#mylife li").each(function(i, val){
-					$(val).removeClass().addClass("mlleftout");
-			})
+	if(animation == true){		
+		if(window.innerWidth < 600){
+				$("#mylife li").each(function(i, val){
+						$(val).removeClass().addClass("mlleftout");
+						
+				})
+		} else {
+				$("#mylife li").each(function(i, val){
+					if(i % 2 != 0){
+						$(val).removeClass().addClass("mlrightout");
+							
+					} else {
+						$(val).removeClass().addClass("mlleftout");
+					}			
+		});
+		}	
 	} else {
-			$("#mylife li").each(function(i, val){
-				if(i % 2 != 0){
-					$(val).removeClass().addClass("mlrightout");
-				} else {
-					$(val).removeClass().addClass("mlleftout");
-				}				
-	});
+		if(window.innerWidth < 600){
+				$("#mylife li").each(function(i, val){
+						$(val).removeClass().addClass("mlleftin");
+				})
+		} else {
+				$("#mylife li").each(function(i, val){
+					if(i % 2 != 0){
+						$(val).removeClass().addClass("mlrightin");
+					} else {
+						$(val).removeClass().addClass("mlleftin");
+					}				
+		});
+		}	
 	}
 	
 }
+function swaparrows(){
+	$("#mylife li").each(function(i, val){
+	if(window.innerWidth < 600){
+		var d = $("#branch"+i).attr("d");
+		var newd = d;
+		console.log(d);
+		if (d.indexOf("45") >= 0){
+			newd = d.replace("45", "15");
+		}					
+		$("#branch"+i).attr("d", newd);
+	} else {
+		if(i % 2 != 0){
+		var d = $("#branch"+i).attr("d");
+		var newd = d;
+		if (d.indexOf("15") >= 0){
+			newd = d.replace("15", "45");
+		}
+		$("#branch"+i).attr("d", newd);
+		}
+	}
+	});
+}
 function createmylife(context){
-var lineheight = context.lineheight;
-var branchrad = context.branchrad;
+context.lineheight = typeof context.lineheight !== 'undefined' ? context.lineheight : 300;
+context.branchrad = typeof context.branchrad !== 'undefined' ? context.branchrad : 20;
+context.branchwidth = typeof context.branchwidth!== 'undefined' ? context.branchwidth : "4";
+context.branchtype = typeof context.branchtype !== 'undefined' ? context.branchtype : "circle";
+context.branchfill = typeof context.branchfill !== 'undefined' ? context.branchfill : "none";
+context.treecolor = typeof context.treecolor !== 'undefined' ? context.treecolor : "#181818";
+context.treewidth = typeof context.treewidth !== 'undefined' ? context.treewidth : "4";
+context.animation = typeof context.animation !== 'undefined' ? context.animation : true;
+animation = context.animation;
 var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
 permbox = boxwidth;
 var boxheight = $("#mylife").find("li").eq(0).outerHeight();
-if(boxheight > lineheight){
-	boxheight = lineheight;
+if(boxheight > context.lineheight){
+	boxheight = context.lineheight;
 	$("#mylife li").each(function(i, val){
 			$(val).css("height", boxheight);
 	});
 }
-eachmoment(lineheight, branchrad, boxwidth, boxheight);
-checksize();
+eachmoment(context.lineheight, context.branchrad, boxwidth, boxheight, context.treecolor, context.treewidth, context.branchwidth, context.branchtype, context.branchfill);
 }
 
-function eachmoment(lineheight, branchrad, boxwidth, boxheight){
+function eachmoment(lineheight, branchrad, boxwidth, boxheight, treecolor, treewidth, branchwidth, branchtype, branchfill){
 	$("#mylife li").each(function(i, val){
 	if(i == 0){
 		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -53,18 +104,19 @@ function eachmoment(lineheight, branchrad, boxwidth, boxheight){
 	topper.setAttribute("x2", "60");
 	topper.setAttribute("y1", "0");
 	topper.setAttribute("y2", "0");
-	topper.setAttribute("stroke", "black");
-	topper.setAttribute("stroke-width", "10");
+	topper.setAttribute("stroke", treecolor);
+	topper.setAttribute("stroke-width", treewidth);
 	topper.setAttribute("opacity", "1");
 	topper.setAttribute("fill", "none");
 	$("#lifeline").append(topper);
 	}
-	trunks(i, lineheight, branchrad);
-	branches(i, lineheight, branchrad, boxheight);
+	trunks(i, lineheight, branchrad, treecolor, treewidth);
+	branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
 	positionli(i, lineheight, branchrad, boxwidth, boxheight);
-	//alert("");
 	
 });
+swaparrows();
+doneload = true;
 }
 function scroller() {
     didScroll = true;
@@ -78,28 +130,30 @@ setInterval(function() {
 }, 250);
 
 function reposition(){
-	    var offset = $(window).scrollTop();
-	 $("#mylife li").each(function(i, val){
-		if(offset > (parseInt($(val).css("top"))-100)){
-			if($(val).hasClass("mlleftout")){
-				$(val).removeClass().addClass("mlleftin");
+	if(animation == true){
+		var offset = $(window).scrollTop();
+		 $("#mylife li").each(function(i, val){
+			if(offset > (parseInt($(val).css("top"))-100)){
+				if($(val).hasClass("mlleftout")){
+					$(val).removeClass().addClass("mlleftin");
+				}
+				if($(val).hasClass("mlrightout")){
+					$(val).removeClass().addClass("mlrightin");
+				}
 			}
-			if($(val).hasClass("mlrightout")){
-				$(val).removeClass().addClass("mlrightin");
+			if(offset < (parseInt($(val).css("top"))-100)){
+				if($(val).hasClass("mlleftin")){
+					$(val).removeClass().addClass("mlleftout");
+				}
+				if($(val).hasClass("mlrightin")){
+					$(val).removeClass().addClass("mlrightout");
+				}	
 			}
-		}
-		if(offset < (parseInt($(val).css("top")))){
-			if($(val).hasClass("mlleftin")){
-				$(val).removeClass().addClass("mlleftout");
-			}
-			if($(val).hasClass("mlrightin")){
-				$(val).removeClass().addClass("mlrightout");
-			}	
-		}
-	 });
+		 });		
+	}	    
 }
 
-function trunks(i, lineheight, branchrad){
+function trunks(i, lineheight, branchrad, treecolor, treewidth){
 	var trunk = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	trunk.setAttribute("id", "line"+i);
 	trunk.setAttribute("x1", "30");
@@ -110,27 +164,54 @@ function trunks(i, lineheight, branchrad){
 	}
 	trunk.setAttribute("x2", "30");
 	trunk.setAttribute("y2", (parseInt(trunk.getAttribute("y1")))+lineheight);
-	trunk.setAttribute("stroke", "black");
-	trunk.setAttribute("stroke-width", "10");
+	trunk.setAttribute("stroke", treecolor);
+	trunk.setAttribute("stroke-width", treewidth);
 	trunk.setAttribute("opacity", "1");
 	trunk.setAttribute("fill", "none");
 	$("#lifeline").append(trunk);
 	topt = parseInt(trunk.getAttribute("y2"));
 }
-function branches(i, lineheight, branchrad, boxheight){
+function branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
+	if(branchtype == "circle"){
+		circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
+	} else
+	if(branchtype == "arrow"){
+		arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
+	}
+	
+}
+function circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-	branch.setAttribute("id", "branch"+i);
-	branch.setAttribute("cx", "30");
-	branch.setAttribute("cy", (topt + branchrad));
-	branch.setAttribute("r", branchrad);
-	branch.setAttribute("stroke", "black");
-	branch.setAttribute("stroke-width", "2");
-	branch.setAttribute("opacity", "1");
-	branch.setAttribute("fill", "none");
-	$("#lifeline").append(branch);
-	$("#lifeline").css("height", (parseInt(branch.getAttribute("cy")))+(branchrad*4));
-	console.log("BOXHEIGHT:"+boxheight);
-	$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(branchrad*4)+boxheight));
+		branch.setAttribute("id", "branch"+i);
+		branch.setAttribute("cx", "30");
+		branch.setAttribute("cy", (topt + branchrad));
+		branch.setAttribute("r", branchrad);
+		branch.setAttribute("stroke", treecolor);
+		branch.setAttribute("stroke-width", branchwidth);
+		branch.setAttribute("opacity", "1");
+		branch.setAttribute("fill", branchfill);
+		$("#lifeline").append(branch);
+		$("#lifeline").css("height", (parseInt(branch.getAttribute("cy")))+(branchrad*4));
+		$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(branchrad*4)+boxheight));
+}
+function arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
+	var branch = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		branch.setAttribute("id", "branch"+i);
+		var direc = 0;
+		if(i % 2 == 0){
+			direc = 15;
+		}else{
+			direc = 45;
+		}
+		branch.setAttribute("d", "M 30 "+(topt)+ " L "+direc+ " "+(topt+branchrad)+ " L 30 "+(topt+(branchrad*2)) + " Z");
+		branch.setAttribute("stroke", treecolor);
+		branch.setAttribute("stroke-width", branchwidth);
+		branch.setAttribute("opacity", "1");
+		branch.setAttribute("fill", branchfill);
+		branch.setAttribute("data-bottom", (topt+(branchrad*2)));
+		$("#lifeline").append(branch);
+		$("#lifeline").css("height", (parseInt(branch.getAttribute("data-bottom")))+(branchrad*4));
+		$("#mylife").css("height", ((parseInt(branch.getAttribute("data-bottom")))+(branchrad*4)+boxheight));
 }
 function positionli(i, lineheight, branchrad, boxwidth, boxheight){
 	var curli = $("#mylife").find("li").eq(i);

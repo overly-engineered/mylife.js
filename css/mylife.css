@@ -7,7 +7,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  margin-top: 10px;
   overflow: hidden;
   background: linear-gradient(25deg, #e10522 0%, rgba(225, 5, 34, 0) 70%), linear-gradient(85deg, #3105d1 10%, rgba(49, 5, 209, 0) 80%), linear-gradient(125deg, #0adbd8 10%, rgba(10, 219, 216, 0) 80%), linear-gradient(180deg, #09f505 100%, rgba(9, 245, 5, 0) 70%), linear-gradient(215deg, #e10522 0%, rgba(225, 5, 34, 0) 70%), linear-gradient(265deg, #3105d1 10%, rgba(49, 5, 209, 0) 80%), linear-gradient(305deg, #0adbd8 10%, rgba(10, 219, 216, 0) 80%), linear-gradient(340deg, #09f505 100%, rgba(9, 245, 5, 0) 70%); }
   #mylife ul {
@@ -20,6 +19,14 @@
   #mylife li {
     position: absolute;
     transition: all 1s; }
+  #mylife li:nth-child(odd) {
+    -webkit-box-shadow: -5px 10px 47px -15px #181818;
+    -moz-box-shadow: -5px 10px 47px -15px #181818;
+    box-shadow: -5px 10px 47px -15px #181818; }
+  #mylife li:nth-child(even) {
+    -webkit-box-shadow: 5px 10px 47px -15px #181818;
+    -moz-box-shadow: 5px 10px 47px -15px #181818;
+    box-shadow: 5px 10px 47px -15px #181818; }
   #mylife li .frost {
     height: 100%;
     width: 100%;
@@ -30,7 +37,7 @@
     -ms-filter: blur(2px);
     filter: blur(2px);
     opacity: 0.2;
-    border: 1px solid black; }
+    border: 1px solid #181818; }
   #mylife li span {
     opacity: 1;
     -webkit-filter: blur(0px);
