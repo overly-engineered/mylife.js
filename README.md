@@ -2,8 +2,8 @@
 
 An animated timeline for showing off the best of your work.
 
-See the code pen demo <a target="_blank" href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a><br>
-<a href="#mylifefeatures">Click here for Features</a>
+See the code pen demo <a target="_blank" href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a> <br>
+<a id="mylifefeatures" class="anchor" href="#mylifefeatures" aria-hidden="true">Click here for Features</a>
 
 Fully responsive.
 
