@@ -27,12 +27,7 @@ Animation is optional.
 add your text in the span.
 
 add frosted glass effect by including before your span
-
-This:
-```
-<li><span>1</span></li>
-```
-becomes this
+<br>
 ```
 <li><div class="frost"></div><span>1</span></li>
 ```
