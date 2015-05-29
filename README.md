@@ -3,13 +3,12 @@
 An animated timeline for showing off the best of your work.
 
 See the code pen demo <a target="_blank" href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a> <br>
-<a id="mylifefeatures" class="anchor" href="#mylifefeatures" aria-hidden="true">Click here for Features</a>
 
 Fully responsive.
 
 Animation is optional.
 
-Small markup:
+<h2>Small markup:</h2>
 
 ```
 <div id="mylife">
@@ -41,7 +40,7 @@ Then add the script. Be sure to include jquery before this.
 	createmylife();
 </script>
 ```
-<a id="mylifefeatures" class="anchor" href="#mylifefeatures" aria-hidden="true">Features:</a>
+<h2>Features:</h2>
 A more customised feel with options:
 ```
 <script>
@@ -57,8 +56,6 @@ A more customised feel with options:
 	});
 </script>
 ```
-
-
 
 For Date Branch use the "data-date" attr in your markup
 This
