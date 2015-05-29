@@ -44,7 +44,7 @@ or with options if you want a more customised feel:
 		lineheight : 400, // distance between branches default is 300
 		branchrad : 20, // branchradius default is 20
 		branchwidth : 5, // branch thickness default is 4
-		branchtype : "arrow", // branch type. currently "circle" or "arrow" default is "circle
+		branchtype : "arrow", // branch type. currently "circle" or "arrow" default is "circle"
 		branchfill : "#fff", // fill color for branches default is none
 		treecolor : "#fff", // tree color default is #181818
 		treewidth : 5, // tree width default is 4
