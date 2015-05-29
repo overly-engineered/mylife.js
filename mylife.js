@@ -209,7 +209,7 @@ function arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth
 		}else{
 			direc = 75;
 		}
-		branch.setAttribute("d", "M 60 "+(topt)+ " L "+direc+ " "+(topt+branchrad)+ " L 60 "+(topt+(branchrad*2)) + " Z");
+		branch.setAttribute("d", "M 60 "+(topt-1)+ " L "+direc+ " "+(topt+branchrad)+ " L 60 "+(topt+(branchrad*2)+1));
 		branch.setAttribute("stroke", treecolor);
 		branch.setAttribute("stroke-width", branchwidth);
 		branch.setAttribute("opacity", "1");
