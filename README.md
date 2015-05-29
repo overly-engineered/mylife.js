@@ -19,13 +19,24 @@ simple syntax
 	</ul>
 </div>
 ```
-add your text in the span, everything else is done by adding this script.
+add your text in the span.
+add frosted glass effect by including before your span
+
+This:
+```
+<li><span>1</span></li>
+```
+becomes this
+```
+<li><div class="frost"></div><span>1</span></li>
+```
+Then add the script. Be sure to include jquery before this.
 ```
 <script>
 	createmylife();
 </script>
 ```
-or with options:
+or with options if you want a more customised feel:
 ```
 <script>
 	createmylife({
