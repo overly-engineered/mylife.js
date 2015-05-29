@@ -56,11 +56,6 @@ A more customised feel with options:
 ```
 
 For Date Branch use the "data-date" attr in your markup
-This
-```
-<li><div class="frost"></div><span>1</span></li>
-```
-Becomes
 ```
 <li data-date="05/05/1991"><div class="frost"></div><span>1</span></li>
 ```
