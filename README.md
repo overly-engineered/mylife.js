@@ -20,6 +20,7 @@ simple syntax
 </div>
 ```
 add your text in the span.
+
 add frosted glass effect by including before your span
 
 This:
@@ -40,14 +41,14 @@ or with options if you want a more customised feel:
 ```
 <script>
 	createmylife({
-		lineheight : 400,
-		branchrad : 20,
-		branchwidth : 5,
-		branchtype : "arrow",
-		branchfill : "#fff",
-		treecolor : "#fff",
-		treewidth : 5,
-		animation : true
+		lineheight : 400, // distance between branches default is 300
+		branchrad : 20, // branchradius default is 20
+		branchwidth : 5, // branch thickness default is 4
+		branchtype : "arrow", // branch type. currently "circle" or "arrow" default is "circle
+		branchfill : "#fff", // fill color for branches default is none
+		treecolor : "#fff", // tree color default is #181818
+		treewidth : 5, // tree width default is 4
+		animation : true // disable slide in animations default is on
 	});
 </script>
 ```
