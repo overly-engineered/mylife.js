@@ -2,7 +2,9 @@
 
 An animated timeline for showing off the best of your work.
 
-Fully resposnive.
+See the code pen demo <a href="http://codepen.io/overlyenginnered/full/doNNOw/">here</a>
+
+Fully responsive.
 
 Animation is optional.
 

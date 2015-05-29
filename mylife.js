@@ -226,9 +226,6 @@ function datebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth,
 	branch.setAttribute("x", 0);
 	branch.setAttribute("y", (topt + branchrad)+5);
 	branch.setAttribute("style", "font-size:20px; font-family:Verdana;");
-	branch.setAttribute("stroke", treecolor);
-	/*branch.setAttribute("stroke-width", branchwidth);
-	branch.setAttribute("opacity", "1");*/
 	branch.setAttribute("fill", branchfill);
 	$(branch).text(val);
 	$("#lifeline").append(branch);
