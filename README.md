@@ -8,6 +8,8 @@ Fully responsive.
 
 Animation is optional.
 
+<small>Works best with some space above not as the first element if using animtion</small>
+
 <h2>Small markup:</h2>
 
 ```
