@@ -54,16 +54,16 @@ function swaparrows(){
 				var d = $("#branch"+i).attr("d");
 				var newd = d;
 				console.log(d);
-				if (d.indexOf("45") >= 0){
-					newd = d.replace("45", "15");
+				if (d.indexOf("75") >= 0){
+					newd = d.replace("75", "45");
 				}					
 				$("#branch"+i).attr("d", newd);
 			} else {
 				if(i % 2 != 0){
 				var d = $("#branch"+i).attr("d");
 				var newd = d;
-				if (d.indexOf("15") >= 0){
-					newd = d.replace("15", "45");
+				if (d.indexOf("45") >= 0){
+					newd = d.replace("45", "75");
 				}
 				$("#branch"+i).attr("d", newd);
 				}
@@ -102,8 +102,8 @@ function eachmoment(lineheight, branchrad, boxwidth, boxheight, treecolor, treew
 	$("#mylife").append(svg);
 	var topper = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	topper.setAttribute("id", "topper");
-	topper.setAttribute("x1", "0");
-	topper.setAttribute("x2", "60");
+	topper.setAttribute("x1", "30");
+	topper.setAttribute("x2", "90");
 	topper.setAttribute("y1", "0");
 	topper.setAttribute("y2", "0");
 	topper.setAttribute("stroke", treecolor);
@@ -113,7 +113,7 @@ function eachmoment(lineheight, branchrad, boxwidth, boxheight, treecolor, treew
 	$("#lifeline").append(topper);
 	}
 	trunks(i, lineheight, branchrad, treecolor, treewidth);
-	branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
+	branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill, $(val).attr("data-date"));
 	positionli(i, lineheight, branchrad, boxwidth, boxheight);
 	
 });
@@ -143,7 +143,7 @@ function reposition(){
 					$(val).removeClass().addClass("mlrightin");
 				}
 			}
-			if(offset < (parseInt($(val).css("top"))-100)){
+			if(offset < (parseInt($(val).css("top")))){
 				if($(val).hasClass("mlleftin")){
 					$(val).removeClass().addClass("mlleftout");
 				}
@@ -158,13 +158,13 @@ function reposition(){
 function trunks(i, lineheight, branchrad, treecolor, treewidth){
 	var trunk = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	trunk.setAttribute("id", "line"+i);
-	trunk.setAttribute("x1", "30");
+	trunk.setAttribute("x1", "60");
 	if(i==0){
 	trunk.setAttribute("y1", ((lineheight*i)));
 	}else{
 	trunk.setAttribute("y1", ((lineheight*i)+((branchrad*2)*i)));
 	}
-	trunk.setAttribute("x2", "30");
+	trunk.setAttribute("x2", "60");
 	trunk.setAttribute("y2", (parseInt(trunk.getAttribute("y1")))+lineheight);
 	trunk.setAttribute("stroke", treecolor);
 	trunk.setAttribute("stroke-width", treewidth);
@@ -173,20 +173,22 @@ function trunks(i, lineheight, branchrad, treecolor, treewidth){
 	$("#lifeline").append(trunk);
 	topt = parseInt(trunk.getAttribute("y2"));
 }
-function branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
+function branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill, val){
 	if(branchtype == "circle"){
 		circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
 	} else
 	if(branchtype == "arrow"){
 		arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill);
 	}
-	
+	if(branchtype == "date"){
+		datebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill, val);
+	}	
 }
 function circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 		branch.setAttribute("id", "branch"+i);
 		branch.setAttribute("type", "circle");
-		branch.setAttribute("cx", "30");
+		branch.setAttribute("cx", "60");
 		branch.setAttribute("cy", (topt + branchrad));
 		branch.setAttribute("r", branchrad);
 		branch.setAttribute("stroke", treecolor);
@@ -203,11 +205,11 @@ function arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth
 		branch.setAttribute("type", "arrow");
 		var direc = 0;
 		if(i % 2 == 0){
-			direc = 15;
-		}else{
 			direc = 45;
+		}else{
+			direc = 75;
 		}
-		branch.setAttribute("d", "M 30 "+(topt)+ " L "+direc+ " "+(topt+branchrad)+ " L 30 "+(topt+(branchrad*2)) + " Z");
+		branch.setAttribute("d", "M 60 "+(topt)+ " L "+direc+ " "+(topt+branchrad)+ " L 60 "+(topt+(branchrad*2)) + " Z");
 		branch.setAttribute("stroke", treecolor);
 		branch.setAttribute("stroke-width", branchwidth);
 		branch.setAttribute("opacity", "1");
@@ -216,6 +218,22 @@ function arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth
 		$("#lifeline").append(branch);
 		$("#lifeline").css("height", (parseInt(branch.getAttribute("data-bottom")))+(branchrad*4));
 		$("#mylife").css("height", ((parseInt(branch.getAttribute("data-bottom")))+(branchrad*4)+boxheight));
+}
+function datebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill, val){
+	var branch = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	branch.setAttribute("id", "branch"+i);
+	branch.setAttribute("type", "text");
+	branch.setAttribute("x", 0);
+	branch.setAttribute("y", (topt + branchrad)+5);
+	branch.setAttribute("style", "font-size:20px; font-family:Verdana;");
+	branch.setAttribute("stroke", treecolor);
+	/*branch.setAttribute("stroke-width", branchwidth);
+	branch.setAttribute("opacity", "1");*/
+	branch.setAttribute("fill", branchfill);
+	$(branch).text(val);
+	$("#lifeline").append(branch);
+	$("#lifeline").css("height", (parseInt(topt+25))+(branchrad*4));
+	$("#mylife").css("height", ((parseInt(topt+25))+(branchrad*4)+boxheight));
 }
 function positionli(i, lineheight, branchrad, boxwidth, boxheight){
 	var curli = $("#mylife").find("li").eq(i);

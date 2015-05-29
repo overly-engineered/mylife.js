@@ -20,7 +20,8 @@
     position: absolute;
     transition: left 1s, right 1s;
     border: 1px solid RGBA(0, 0, 0, 0.2);
-    border-radius: 5px; }
+    border-radius: 5px;
+    margin-top: 10px; }
   #mylife li:nth-child(odd) {
     -webkit-box-shadow: -5px 10px 47px -15px #181818;
     -moz-box-shadow: -5px 10px 47px -15px #181818;
@@ -53,13 +54,14 @@
     border-radius: 5px;
     padding: 15px; }
   #mylife svg {
-    width: 60px;
+    width: 120px;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    margin-top: 10px; }
 
 @media handheld, screen and (min-width: 1300px) {
   #mylife li {
