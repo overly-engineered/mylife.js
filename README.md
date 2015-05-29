@@ -6,7 +6,8 @@ Fully resposnive.
 
 Animation is optional.
 
-simple syntax
+Small markup:
+
 ```
 <div id="mylife">
 	<ul>
@@ -52,3 +53,7 @@ or with options if you want a more customised feel:
 	});
 </script>
 ```
+
+CSS and SCSS files included use whatever takes your fancy.
+
+Minified files to come.

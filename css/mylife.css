@@ -18,7 +18,7 @@
     position: relative; }
   #mylife li {
     position: absolute;
-    transition: all 1s;
+    transition: left 1s, right 1s;
     border: 1px solid RGBA(0, 0, 0, 0.2);
     border-radius: 5px; }
   #mylife li:nth-child(odd) {
