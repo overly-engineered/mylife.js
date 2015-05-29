@@ -230,8 +230,9 @@ function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
 		if(i==9){
 			console.log(topt);
 		}
-		branch.setAttribute("d", "M 60 "+((topt))+ " L "+direc+ " "+((topt+brr))+ " L 60 "+(topt+(brr*2)+1));
+		branch.setAttribute("d", "M 60 "+((topt))+ " L "+direc+ " "+(topt+brr)+ " L 60 "+(topt+(brr*2)+1));
 		if(i==9){
+			debugger;
 			console.log(branch.getAttribute("d"));
 		}
 		branch.setAttribute("stroke", tc);
