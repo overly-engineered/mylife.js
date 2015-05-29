@@ -19,6 +19,8 @@ padding:0; box-sizing:border-box;}
 	}
 	li{position:absolute; 
 	transition:all 1s;
+	border: 1px solid RGBA(0,0,0,0.2);
+ 	border-radius: 5px;
 	}
 	li:nth-child(odd){
 		-webkit-box-shadow: -5px 10px 47px -15px rgba(24,24,24,1);
@@ -41,6 +43,7 @@ padding:0; box-sizing:border-box;}
 		filter: blur(2px);
 		opacity: 0.2;
 		border:1px solid #181818;
+		border-radius: 5px;
 	}
 	li span{
 		opacity:1;
@@ -51,6 +54,8 @@ padding:0; box-sizing:border-box;}
 		filter: blur(0px);
 		position:absolute;
 		top:0;
+		border-radius: 5px;
+		padding: 15px;
 	}
 	svg{
 		width:60px;

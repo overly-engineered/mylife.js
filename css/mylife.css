@@ -18,7 +18,9 @@
     position: relative; }
   #mylife li {
     position: absolute;
-    transition: all 1s; }
+    transition: all 1s;
+    border: 1px solid RGBA(0, 0, 0, 0.2);
+    border-radius: 5px; }
   #mylife li:nth-child(odd) {
     -webkit-box-shadow: -5px 10px 47px -15px #181818;
     -moz-box-shadow: -5px 10px 47px -15px #181818;
@@ -37,7 +39,8 @@
     -ms-filter: blur(2px);
     filter: blur(2px);
     opacity: 0.2;
-    border: 1px solid #181818; }
+    border: 1px solid #181818;
+    border-radius: 5px; }
   #mylife li span {
     opacity: 1;
     -webkit-filter: blur(0px);
@@ -46,7 +49,9 @@
     -ms-filter: blur(0px);
     filter: blur(0px);
     position: absolute;
-    top: 0; }
+    top: 0;
+    border-radius: 5px;
+    padding: 15px; }
   #mylife svg {
     width: 60px;
     position: absolute;

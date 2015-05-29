@@ -49,24 +49,26 @@ function checksize(){
 }
 function swaparrows(){
 	$("#mylife li").each(function(i, val){
-	if(window.innerWidth < 600){
-		var d = $("#branch"+i).attr("d");
-		var newd = d;
-		console.log(d);
-		if (d.indexOf("45") >= 0){
-			newd = d.replace("45", "15");
-		}					
-		$("#branch"+i).attr("d", newd);
-	} else {
-		if(i % 2 != 0){
-		var d = $("#branch"+i).attr("d");
-		var newd = d;
-		if (d.indexOf("15") >= 0){
-			newd = d.replace("15", "45");
+		if($("#branch"+i).attr("type") == "arrow"){
+			if(window.innerWidth < 600){
+				var d = $("#branch"+i).attr("d");
+				var newd = d;
+				console.log(d);
+				if (d.indexOf("45") >= 0){
+					newd = d.replace("45", "15");
+				}					
+				$("#branch"+i).attr("d", newd);
+			} else {
+				if(i % 2 != 0){
+				var d = $("#branch"+i).attr("d");
+				var newd = d;
+				if (d.indexOf("15") >= 0){
+					newd = d.replace("15", "45");
+				}
+				$("#branch"+i).attr("d", newd);
+				}
+			}
 		}
-		$("#branch"+i).attr("d", newd);
-		}
-	}
 	});
 }
 function createmylife(context){
@@ -183,6 +185,7 @@ function branches(i, lineheight, branchrad, boxheight, treecolor, branchwidth, b
 function circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 		branch.setAttribute("id", "branch"+i);
+		branch.setAttribute("type", "circle");
 		branch.setAttribute("cx", "30");
 		branch.setAttribute("cy", (topt + branchrad));
 		branch.setAttribute("r", branchrad);
@@ -197,6 +200,7 @@ function circlebranch(i, lineheight, branchrad, boxheight, treecolor, branchwidt
 function arrowbranch(i, lineheight, branchrad, boxheight, treecolor, branchwidth, branchtype, branchfill){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		branch.setAttribute("id", "branch"+i);
+		branch.setAttribute("type", "arrow");
 		var direc = 0;
 		if(i % 2 == 0){
 			direc = 15;
