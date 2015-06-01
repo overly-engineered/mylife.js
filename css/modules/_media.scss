@@ -42,7 +42,9 @@ $width : 500px;
 		svg{
 			right:0;
 			left:80%;
+			width:120px;
 		}
+		//#title{display:none;}
 	}
 }
 @media handheld, screen and (max-width: 500px) {
@@ -51,7 +53,9 @@ $width : 500px;
 		svg{
 			right:0;
 			left:80%;
+			width:120px;
 		}
+		//#title{display:none;}
 	}
 }
 @media handheld, screen and (max-width: 400px) {
@@ -60,7 +64,9 @@ $width : 500px;
 		svg{
 			right:0;
 			left:80%;
+			width:120px;
 		}
+		//#title{display:none;}
 	}
 }
 @media handheld, screen and (max-width: 350px) {
@@ -69,6 +75,8 @@ $width : 500px;
 		svg{
 			right:0;
 			left:80%;
+			width:120px;
 		}
+		//#title{display:none;}
 	}
 }
