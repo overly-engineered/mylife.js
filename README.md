@@ -44,13 +44,17 @@ A more customised feel with options:
 <script>
 	createmylife({
 		lineheight : 400, // distance between branches default is 300
-		branchrad : 20, // branchradius default is 20
+		branchrad : 30, // branchradius default is 20
 		branchwidth : 5, // branch thickness default is 4
-		branchtype : "arrow", // branch type. currently "circle", "arrow" or "date"(see below for extra markup) default is "circle"
-		branchfill : "#fff", // fill color for branches default is none
+		branchtype : "dash", // branch type. currently "circle", "arrow", "date"(see below for extra markup) or "dash" default is "circle"
+		branchfill : "none", // fill color for branches default is none
 		treecolor : "#fff", // tree color default is #181818
 		treewidth : 5, // tree width default is 4
-		animation : true // disable slide in animations default is true
+		animation : true, // disable slide in animations default is true
+		extratop : true, // adds an extra spacer at the top of the tree default is false
+		extratopsize : 200, // sets the size for the extra spacer default is 200
+		title : "mylife.js", // adds title to the top of the tree default is ""
+		titlecolor: "#fff" // title color default is #fff
 	});
 </script>
 ```
