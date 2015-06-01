@@ -5,6 +5,7 @@ var animation;
 var doneload = false;
 var gets = 0;
 var branchtype= "";
+var svgNS = "";
 window.onscroll = scroller;
 $(document).ready(function(){
 	$(window).on('resize', function(){
@@ -136,13 +137,6 @@ function swaparrows(){
 								}
 							}
 						}
-						/*if(type =="path" && window.innerWidth < 600){
-							if(window.innerWidth < 600){
-								
-							}else{
-								
-							}
-						}*/
 						if(type =="line" && window.innerWidth < 600 && type != "trunk"){
 								
 								if($(this).attr("id") == "basevert" || $(this).attr("id") =="extratop"){
@@ -200,10 +194,10 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 	$("#mylife li").each(function(i, val){
 	if(i == 0){
 		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	var svgNS = svg.namespaceURI;
+	svgNS = svg.namespaceURI;
 	svg.setAttribute("id", "lifeline");
 	$("#mylife").append(svg);
-	var topper = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	var topper = document.createElementNS(svgNS, "path");
 	topper.setAttribute("id", "topper");
 	topper.setAttribute("d", "M 90 0 "+ " L 120 0 "+" L 120 30 " + " L 120 0 " + " L 150 0");
 	topper.setAttribute("stroke", tc);
@@ -213,7 +207,7 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 	topper.setAttribute("type", "path");
 	$("#lifeline").append(topper);
 	if(tit != ""){
-	var title = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	var title = document.createElementNS(svgNS, "text");
 	title.setAttribute("id", "title");
 	title.setAttribute("type", "text");
 	title.setAttribute("x", 120);
@@ -227,7 +221,7 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 	gets=100;
 	}
 	if(et==true){
-		var extratop = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		var extratop = document.createElementNS(svgNS, "line");
 		extratop.setAttribute("id", "extratop");
 		extratop.setAttribute("x1", "120");
 		extratop.setAttribute("x2", "120");
@@ -288,7 +282,7 @@ function reposition(){
 }
 
 function trunks(i, lh, brr, tc, tw){
-	var trunk = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	var trunk = document.createElementNS(svgNS, "line");
 	trunk.setAttribute("id", "line"+i);
 	trunk.setAttribute("x1", "120");
 	if(i==0){
@@ -321,7 +315,7 @@ function branches(i, lh, brr, bh, tc, bw, brt, brf, val, tw){
 	}
 }
 function circlebranch(i, lh, brr, bh, tc, bw, brt, brf){
-	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	var branch = document.createElementNS(svgNS, "circle");
 		branch.setAttribute("id", "branch"+i);
 		branch.setAttribute("type", "circle");
 		branch.setAttribute("cx", "120");
@@ -336,7 +330,7 @@ function circlebranch(i, lh, brr, bh, tc, bw, brt, brf){
 		$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(brr*4)+bh));
 }
 function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
-	var branch = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	var branch = document.createElementNS(svgNS, "path");
 		branch.setAttribute("id", "branch"+i);
 		branch.setAttribute("type", "arrow");
 		var direc = 0;
@@ -356,7 +350,7 @@ function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
 		$("#mylife").css("height", ((parseInt(branch.getAttribute("data-bottom")))+(brr*4)+bh));
 }
 function datebranch(i, lh, brr, bh, tc, bw, brt, brf, val){
-	var branch = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	var branch = document.createElementNS(svgNS, "text");
 	branch.setAttribute("id", "branch"+i);
 	branch.setAttribute("type", "text");
 	branch.setAttribute("x", 120);
@@ -370,7 +364,7 @@ function datebranch(i, lh, brr, bh, tc, bw, brt, brf, val){
 	$("#mylife").css("height", ((parseInt(topt+lh))+(brr*4)));
 }
 function linebranch(i, lh, brr, bh, tc, tw, brt, brf){
-	var branch = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	var branch = document.createElementNS(svgNS, "path");
 	branch.setAttribute("id", "branch"+i);
 	branch.setAttribute("type", "dash");
 	if(i % 2 == 0){
@@ -402,7 +396,7 @@ function positionli(i, lh, brr, boxwidth, bh){
 function addbase(lh, tc, tw, brr){
 	$("#lifeline").css("height", (topt+(lh*2)));
 	$("#mylife").css("height", (topt+(lh*2)));
-	var basevert = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	var basevert = document.createElementNS(svgNS, "line");
 	basevert.setAttribute("id", "basevert");
 	basevert.setAttribute("x1", "120");
 	basevert.setAttribute("x2", "120");
@@ -415,7 +409,7 @@ function addbase(lh, tc, tw, brr){
 	basevert.setAttribute("type", "line");
 	$("#lifeline").append(basevert);
 	topt = parseInt(basevert.getAttribute("y2"));
-	var basehor = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	var basehor = document.createElementNS(svgNS, "line");
 	basehor.setAttribute("id", "basehor");
 	basehor.setAttribute("x1", "90");
 	basehor.setAttribute("x2", "150");
