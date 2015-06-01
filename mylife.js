@@ -48,14 +48,14 @@ function checksize(){
 	}
 	
 }
-/*function swaparrows(){
+function swaparrows(){
 	$("#mylife li").each(function(i, val){
 		if($("#branch"+i).attr("type") == "arrow"){
 			if(window.innerWidth < 600){
 				var d = $("#branch"+i).attr("d");
 				var newd = d;
 				if (d.indexOf("75") >= 0){
-					newd = d.replace("75", "45");
+					newd = d.replace("L 75", "L 45");
 				}					
 				$("#branch"+i).attr("d", newd);
 			} else {
@@ -63,14 +63,14 @@ function checksize(){
 				var d = $("#branch"+i).attr("d");
 				var newd = d;
 				if (d.indexOf("45") >= 0){
-					newd = d.replace("45", "75");
+					newd = d.replace("L 45", "L 75");
 				}
 				$("#branch"+i).attr("d", newd);
 				}
 			}
 		}
 	});
-}*/
+}
 function createmylife(context){
 context.lineheight = typeof context.lineheight !== 'undefined' ? context.lineheight : 300;
 context.branchrad = typeof context.branchrad !== 'undefined' ? context.branchrad : 20;
@@ -228,7 +228,7 @@ function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
 		}else{
 			direc = 75;
 		}
-		branch.setAttribute("d", "M 60 "+(topt)+ " L "+direc+ " "+(topt+brr)+ " L 60 "+(topt+(brr*2)+1));
+		branch.setAttribute("d", "M 60 "+((topt)-1)+ " L "+direc+ " "+(topt+brr)+ " L 60 "+(topt+(brr*2)+1));
 		branch.setAttribute("stroke", tc);
 		branch.setAttribute("stroke-width", bw);
 		branch.setAttribute("opacity", "1");
