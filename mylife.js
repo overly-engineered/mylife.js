@@ -48,7 +48,7 @@ function checksize(){
 	}
 	
 }
-function swaparrows(){
+/*function swaparrows(){
 	$("#mylife li").each(function(i, val){
 		if($("#branch"+i).attr("type") == "arrow"){
 			if(window.innerWidth < 600){
@@ -70,7 +70,7 @@ function swaparrows(){
 			}
 		}
 	});
-}
+}*/
 function createmylife(context){
 context.lineheight = typeof context.lineheight !== 'undefined' ? context.lineheight : 300;
 context.branchrad = typeof context.branchrad !== 'undefined' ? context.branchrad : 20;
@@ -132,11 +132,12 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, bf, et, ets){
 	trunks(i, lh, brr, tc, tw);
 	branches(i, lh, brr, bh, tc, brw, brt, bf, $(val).attr("data-date"));
 	positionli(i, lh, brr, bw, bh);
-	
 });
 addbase(lh, tc, tw, brr);
 swaparrows();
+	console.log($("#branch9").attr("d"));
 doneload = true;
+
 }
 function scroller() {
     didScroll = true;
@@ -227,14 +228,7 @@ function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
 		}else{
 			direc = 75;
 		}
-		if(i==9){
-			console.log(topt);
-		}
-		branch.setAttribute("d", "M 60 "+((topt))+ " L "+direc+ " "+(topt+brr)+ " L 60 "+(topt+(brr*2)+1));
-		if(i==9){
-			debugger;
-			console.log(branch.getAttribute("d"));
-		}
+		branch.setAttribute("d", "M 60 "+(topt)+ " L "+direc+ " "+(topt+brr)+ " L 60 "+(topt+(brr*2)+1));
 		branch.setAttribute("stroke", tc);
 		branch.setAttribute("stroke-width", bw);
 		branch.setAttribute("opacity", "1");
