@@ -4,6 +4,7 @@ var permbox = 0;
 var animation;
 var doneload = false;
 var et = 0;
+var branchtype= "";
 window.onscroll = scroller;
 $(document).ready(function(){
 	$(window).on('resize', function(){
@@ -69,6 +70,25 @@ function swaparrows(){
 				}
 			}
 		}
+		if(branchtype == "line"){
+			if(window.innerWidth < 600){
+				var d = $("#branch"+i).attr("d");
+				var newd = d;
+				if (d.indexOf("80") >= 0){
+					newd = d.replace("L 80", "L 40");
+				}					
+				$("#branch"+i).attr("d", newd);
+			} else {
+				if(i % 2 != 0){
+				var d = $("#branch"+i).attr("d");
+				var newd = d;
+				if (d.indexOf("40") >= 0){
+					newd = d.replace("L 40", "L 80");
+				}
+				$("#branch"+i).attr("d", newd);
+				}
+			}
+		}
 	});
 }
 function createmylife(context){
@@ -84,6 +104,7 @@ context.extratop = typeof context.extratop !== 'undefined' ? context.extratop : 
 context.extratopsize = typeof context.extratopsize !== 'undefined' ? context.extratopsize : false;
 animation = context.animation;
 et = context.extratopsize;
+branchtype = context.branchtype;
 var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
 permbox = boxwidth;
 var bh = $("#mylife").find("li").eq(0).outerHeight();
@@ -130,12 +151,11 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, bf, et, ets){
 	}
 
 	trunks(i, lh, brr, tc, tw);
-	branches(i, lh, brr, bh, tc, brw, brt, bf, $(val).attr("data-date"));
+	branches(i, lh, brr, bh, tc, brw, brt, bf, $(val).attr("data-date"), tw);
 	positionli(i, lh, brr, bw, bh);
 });
 addbase(lh, tc, tw, brr);
 swaparrows();
-	console.log($("#branch9").attr("d"));
 doneload = true;
 
 }
@@ -192,7 +212,7 @@ function trunks(i, lh, brr, tc, tw){
 	$("#lifeline").append(trunk);
 	topt = parseInt(trunk.getAttribute("y2"));
 }
-function branches(i, lh, brr, bh, tc, bw, brt, brf, val){
+function branches(i, lh, brr, bh, tc, bw, brt, brf, val, tw){
 	if(brt == "circle"){
 		circlebranch(i, lh, brr, bh, tc, bw, brt, brf);
 	} else
@@ -202,6 +222,9 @@ function branches(i, lh, brr, bh, tc, bw, brt, brf, val){
 	if(brt == "date"){
 		datebranch(i, lh, brr, bh, tc, bw, brt, brf, val);
 	}	
+	if(brt == "line"){
+		linebranch(i, lh, brr, bh, tc, tw, brt, brf);
+	}
 }
 function circlebranch(i, lh, brr, bh, tc, bw, brt, brf){
 	var branch = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -250,6 +273,25 @@ function datebranch(i, lh, brr, bh, tc, bw, brt, brf, val){
 	$("#lifeline").append(branch);
 	$("#lifeline").css("height", (parseInt(topt+lh))+(brr*4)-lh);
 	$("#mylife").css("height", ((parseInt(topt+lh))+(brr*4)));
+}
+function linebranch(i, lh, brr, bh, tc, tw, brt, brf){
+	var branch = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	branch.setAttribute("id", "branch"+i);
+	branch.setAttribute("type", "line");
+	if(i % 2 == 0){
+		branch.setAttribute("d","M 60 "+((topt)-1)+ " L 60 "+ (topt+brr)+ " L "+ 40 + " " +(topt+brr) + " L 60 "+ (topt+brr)+ " L 60 "+ (topt+(brr*2)+1));
+	} else {
+		branch.setAttribute("d","M 60 "+((topt)-1)+ " L 60 "+ (topt+brr)+ " L "+ 80 + " " +(topt+brr) + " L 60 "+ (topt+brr)+ " L 60 "+ (topt+(brr*2)+1));
+	}
+	branch.setAttribute("stroke-width", tw);
+	branch.setAttribute("stroke", tc);
+	branch.setAttribute("opacity", "1");
+	branch.setAttribute("fill", "transparent");
+	branch.setAttribute("data-bottom", "");
+	$("#lifeline").append(branch);
+	$("#lifeline").css("height", "");
+	$("#mylife").css("height", "");
+	
 }
 function positionli(i, lh, brr, boxwidth, bh){
 	var curli = $("#mylife").find("li").eq(i);
