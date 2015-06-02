@@ -67,14 +67,13 @@
     margin-right: auto;
     margin-top: 10px; }
   #mylife img {
-    max-width: 100%;
+    max-width: 50%;
     max-height: 100%;
     margin: 5px; }
   #mylife .mlleft {
     float: left; }
-  #mylife .small {
-    max-width: 50%;
-    max-height: 100%; }
+  #mylife .mlprimary, #mylife .mlsecondary {
+    display: block; }
 
 @media handheld, screen and (min-width: 1300px) {
   #mylife li {
@@ -111,7 +110,13 @@
   #mylife svg {
     right: 0;
     left: 80%;
-    width: 120px; } }
+    width: 120px; }
+  #mylife img {
+    max-width: 100%; }
+  #mylife span {
+    font-size: 10px; }
+  #mylife .mlsecondary {
+    display: none; } }
 @media handheld, screen and (max-width: 500px) {
   #mylife li {
     height: 400px;
@@ -119,7 +124,13 @@
   #mylife svg {
     right: 0;
     left: 80%;
-    width: 120px; } }
+    width: 120px; }
+  #mylife img {
+    max-width: 100%; }
+  #mylife span {
+    font-size: 10px; }
+  #mylife .mlsecondary {
+    display: none; } }
 @media handheld, screen and (max-width: 400px) {
   #mylife li {
     height: 400px;
@@ -127,7 +138,13 @@
   #mylife svg {
     right: 0;
     left: 80%;
-    width: 120px; } }
+    width: 120px; }
+  #mylife img {
+    max-width: 100%; }
+  #mylife span {
+    font-size: 10px; }
+  #mylife .mlsecondary {
+    display: none; } }
 @media handheld, screen and (max-width: 350px) {
   #mylife li {
     height: 400px;
@@ -135,7 +152,13 @@
   #mylife svg {
     right: 0;
     left: 80%;
-    width: 120px; } }
+    width: 120px; }
+  #mylife img {
+    max-width: 100%; }
+  #mylife span {
+    font-size: 10px; }
+  #mylife .mlsecondary {
+    display: none; } }
 .mlleftout {
   left: -100%; }
 

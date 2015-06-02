@@ -73,10 +73,10 @@ padding:0; box-sizing:border-box;}
 		margin-top:10px;
 	}
 	img{
-		max-width:100%;
+		max-width:50%;
 		max-height:100%;
 		margin:5px;
 	}
 	.mlleft{float:left;}
-	.small{max-width:50%; max-height: 100%;}
+	.mlprimary, .mlsecondary{display:block;}
 }
