@@ -22,7 +22,7 @@ function checksize(){
 				$("#mylife li").each(function(i, val){
 						$(val).removeClass().addClass("mlleftout");
 						
-				})
+				});
 		} else {
 				$("#mylife li").each(function(i, val){
 					if(i % 2 != 0){
@@ -34,8 +34,22 @@ function checksize(){
 		});
 		}	
 	} else {
-	
+		if(window.innerWidth < 600){
+			$("#mylife li").each(function(i, val){
+						$(val).removeClass().addClass("mlleftin");
+						
+				});
+		} else {
+			$("#mylife li").each(function(i, val){
+					if(i % 2 != 0){
+						$(val).removeClass().addClass("mlrightin");
+							
+					} else {
+						$(val).removeClass().addClass("mlleftin");
+					}	
+		});
 	}
+}
 }
 function swaparrows(){	
 			$("#lifeline").children().each(function(){
