@@ -1,23 +1,23 @@
-var topt = 0;
-var didScroll = false;
-var permbox = 0;
-var animation;
-var doneload = false;
-var gets = 0;
-var branchtype= "";
-var svgNS = "";
+var mltopt = 0;
+var mldidScroll = false;
+var mlpermbox = 0;
+var mlanimation;
+var mldoneload = false;
+var mlgets = 0;
+var mlbranchtype= "";
+var mlsvgNS = "";
 window.onscroll = scroller;
 $(document).ready(function(){
 	$(window).on('resize', function(){
 		checksize();
 		scroller();
-		if(doneload == true){
+		if(mldoneload == true){
 			swaparrows();
 		}
 	});
 });
 function checksize(){
-	if(animation == true){		
+	if(mlanimation == true){		
 		if(window.innerWidth < 600){
 				$("#mylife li").each(function(i, val){
 						$(val).removeClass().addClass("mlleftout");
@@ -62,11 +62,9 @@ function swaparrows(){
 							$(this).attr("x2", "120");
 						}
 						if(type =="circle" && window.innerWidth < 600){
-							console.log("small");
 							$(this).attr("cx", "40");						
 						} else if(type == "circle"){
 							$(this).attr("cx", "120");
-							console.log("big");	
 						}
 						if(type =="arrow" || type == "path" || type == "dash"){
 							var d = $(this).attr("d");
@@ -122,7 +120,6 @@ function swaparrows(){
 									if(slice1.indexOf("h")>=0){
 										slice1 = slice1.replace("h", "");	
 									}
-									console.log(slice1);
 									newd = newd.replace("M 40", "M 120");
 									newd = newd.replace("L 40", "L 120");
 									newd = newd.replace("L 40", "L 120");
@@ -185,15 +182,15 @@ context.extratop = typeof context.extratop !== 'undefined' ? context.extratop : 
 context.extratopsize = typeof context.extratopsize !== 'undefined' ? context.extratopsize : 0;
 context.title = typeof context.title !== 'undefined' ? context.title : "";
 context.titlecolor = typeof context.titlecolor !== 'undefined' ? context.titlecolor : "";
-animation = context.animation;
+mlanimation = context.animation;
 if(context.extratop == true){
-	gets = context.extratopsize;
+	mlgets = context.extratopsize;
 } else {
-	gets = 0;
+	mlgets = 0;
 }
-branchtype = context.branchtype;
+mlbranchtype = context.branchtype;
 var boxwidth = $("#mylife").find("li").eq(0).outerWidth();
-permbox = boxwidth;
+mlpermbox = boxwidth;
 var bh = $("#mylife").find("li").eq(0).outerHeight();
 if(bh > context.lineheight){
 	bh = context.lineheight;
@@ -208,10 +205,10 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 	$("#mylife li").each(function(i, val){
 	if(i == 0){
 		var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-	svgNS = svg.namespaceURI;
+	mlsvgNS = svg.namespaceURI;
 	svg.setAttribute("id", "lifeline");
 	$("#mylife").append(svg);
-	var topper = document.createElementNS(svgNS, "path");
+	var topper = document.createElementNS(mlsvgNS, "path");
 	topper.setAttribute("id", "topper");
 	topper.setAttribute("d", "M 90 0 "+ " L 120 0 "+" L 120 30 " + " L 120 0 " + " L 150 0");
 	topper.setAttribute("stroke", tc);
@@ -221,33 +218,33 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 	topper.setAttribute("type", "path");
 	$("#lifeline").append(topper);
 	if(tit != ""){
-	var title = document.createElementNS(svgNS, "text");
+	var title = document.createElementNS(mlsvgNS, "text");
 	title.setAttribute("id", "title");
 	title.setAttribute("type", "text");
 	title.setAttribute("x", 120);
-	title.setAttribute("y", ((topt + brr)+5)+50);
+	title.setAttribute("y", ((mltopt + brr)+5)+50);
 	title.setAttribute("style", "font-size:50px; font-family:Verdana;");
 	title.setAttribute("fill", titcol);
 	title.setAttribute("text-anchor", "middle");
 	title.setAttribute("type", "text");
 	$(title).text(tit);
 	$("#lifeline").append(title);
-	gets=100;
+	mlgets=100;
 	}
 	if(et==true){
-		var extratop = document.createElementNS(svgNS, "line");
+		var extratop = document.createElementNS(mlsvgNS, "line");
 		extratop.setAttribute("id", "extratop");
 		extratop.setAttribute("x1", "120");
 		extratop.setAttribute("x2", "120");
-		extratop.setAttribute("y1", gets);
-		extratop.setAttribute("y2", gets+ets);
+		extratop.setAttribute("y1", mlgets);
+		extratop.setAttribute("y2", mlgets+ets);
 		extratop.setAttribute("stroke", tc);
 		extratop.setAttribute("stroke-width", tw);
 		extratop.setAttribute("opacity", "1");
 		extratop.setAttribute("fill", "none");
 		extratop.setAttribute("type", "line")
 		$("#lifeline").append(extratop);
-		gets += ets;
+		mlgets += ets;
 	}
 	}
 
@@ -257,22 +254,22 @@ function eachmoment(lh, brr, bw, bh, tc, tw, brw, brt, brf, et, ets, tit, titcol
 });
 addbase(lh, tc, tw, brr);
 swaparrows();
-doneload = true;
+mldoneload = true;
 
 }
 function scroller() {
-    didScroll = true;
+    mldidScroll = true;
 }
 
 setInterval(function() {
-    if(didScroll) {
-        didScroll = false;
+    if(mldidScroll) {
+        mldidScroll = false;
 		reposition();
     }
 }, 250);
 
 function reposition(){
-	if(animation == true){
+	if(mlanimation == true){
 		var offset = $(window).scrollTop();
 		 $("#mylife li").each(function(i, val){
 			if((offset + 400) > ($(val).offset().top)){
@@ -296,13 +293,13 @@ function reposition(){
 }
 
 function trunks(i, lh, brr, tc, tw){
-	var trunk = document.createElementNS(svgNS, "line");
+	var trunk = document.createElementNS(mlsvgNS, "line");
 	trunk.setAttribute("id", "line"+i);
 	trunk.setAttribute("x1", "120");
 	if(i==0){
-	trunk.setAttribute("y1", ((lh*i)+gets));
+	trunk.setAttribute("y1", ((lh*i)+mlgets));
 	}else{
-	trunk.setAttribute("y1", ((lh*i)+((brr*2)*i))+gets);
+	trunk.setAttribute("y1", ((lh*i)+((brr*2)*i))+mlgets);
 	}
 	trunk.setAttribute("x2", "120");
 	trunk.setAttribute("y2", (parseInt(trunk.getAttribute("y1")))+lh);
@@ -312,7 +309,7 @@ function trunks(i, lh, brr, tc, tw){
 	trunk.setAttribute("fill", "none");
 	trunk.setAttribute("type", "trunk");
 	$("#lifeline").append(trunk);
-	topt = parseInt(trunk.getAttribute("y2"));
+	mltopt = parseInt(trunk.getAttribute("y2"));
 }
 function branches(i, lh, brr, bh, tc, bw, brt, brf, val, tw){
 	if(brt == "circle"){
@@ -329,11 +326,11 @@ function branches(i, lh, brr, bh, tc, bw, brt, brf, val, tw){
 	}
 }
 function circlebranch(i, lh, brr, bh, tc, bw, brt, brf){
-	var branch = document.createElementNS(svgNS, "circle");
+	var branch = document.createElementNS(mlsvgNS, "circle");
 		branch.setAttribute("id", "branch"+i);
 		branch.setAttribute("type", "circle");
 		branch.setAttribute("cx", "120");
-		branch.setAttribute("cy", (topt + brr));
+		branch.setAttribute("cy", (mltopt + brr));
 		branch.setAttribute("r", brr);
 		branch.setAttribute("stroke", tc);
 		branch.setAttribute("stroke-width", bw);
@@ -344,7 +341,7 @@ function circlebranch(i, lh, brr, bh, tc, bw, brt, brf){
 		$("#mylife").css("height", ((parseInt(branch.getAttribute("cy")))+(brr*4)+bh));
 }
 function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
-	var branch = document.createElementNS(svgNS, "path");
+	var branch = document.createElementNS(mlsvgNS, "path");
 		branch.setAttribute("id", "branch"+i);
 		branch.setAttribute("type", "arrow");
 		var direc = 0;
@@ -353,38 +350,38 @@ function arrowbranch(i, lh, brr, bh, tc, bw, brt, brf){
 		}else{
 			direc = 135;
 		}
-		branch.setAttribute("d", "M 120 "+((topt)-1)+ " L "+direc+ " "+(topt+brr)+ " L 120 "+(topt+(brr*2)+1));
+		branch.setAttribute("d", "M 120 "+((mltopt)-1)+ " L "+direc+ " "+(mltopt+brr)+ " L 120 "+(mltopt+(brr*2)+1));
 		branch.setAttribute("stroke", tc);
 		branch.setAttribute("stroke-width", bw);
 		branch.setAttribute("opacity", "1");
 		branch.setAttribute("fill", brf);
-		branch.setAttribute("data-bottom", (topt+(brr*2)));
+		branch.setAttribute("data-bottom", (mltopt+(brr*2)));
 		$("#lifeline").append(branch);
 		$("#lifeline").css("height", (parseInt(branch.getAttribute("data-bottom")))+(brr*4));
 		$("#mylife").css("height", ((parseInt(branch.getAttribute("data-bottom")))+(brr*4)+bh));
 }
 function datebranch(i, lh, brr, bh, tc, bw, brt, brf, val){
-	var branch = document.createElementNS(svgNS, "text");
+	var branch = document.createElementNS(mlsvgNS, "text");
 	branch.setAttribute("id", "branch"+i);
 	branch.setAttribute("type", "text");
 	branch.setAttribute("x", 120);
-	branch.setAttribute("y", ((topt + brr)+5));
+	branch.setAttribute("y", ((mltopt + brr)+5));
 	branch.setAttribute("style", "font-size:20px; font-family:Verdana;");
 	branch.setAttribute("fill", tc);
 	branch.setAttribute("text-anchor", "middle");
 	$(branch).text(val);
 	$("#lifeline").append(branch);
-	$("#lifeline").css("height", (parseInt(topt+lh))+(brr*4)-lh);
-	$("#mylife").css("height", ((parseInt(topt+lh))+(brr*4)));
+	$("#lifeline").css("height", (parseInt(mltopt+lh))+(brr*4)-lh);
+	$("#mylife").css("height", ((parseInt(mltopt+lh))+(brr*4)));
 }
 function linebranch(i, lh, brr, bh, tc, tw, brt, brf){
-	var branch = document.createElementNS(svgNS, "path");
+	var branch = document.createElementNS(mlsvgNS, "path");
 	branch.setAttribute("id", "branch"+i);
 	branch.setAttribute("type", "dash");
 	if(i % 2 == 0){
-		branch.setAttribute("d","M 120 "+((topt)-1)+ " L 120 "+ (topt+brr)+ " L "+ 100 + " " +(topt+brr) + " L 120 "+ (topt+brr)+ " L 120 "+ (topt+(brr*2)+1));
+		branch.setAttribute("d","M 120 "+((mltopt)-1)+ " L 120 "+ (mltopt+brr)+ " L "+ 100 + " " +(mltopt+brr) + " L 120 "+ (mltopt+brr)+ " L 120 "+ (mltopt+(brr*2)+1));
 	} else {
-		branch.setAttribute("d","M 120 "+((topt)-1)+ " L 120 "+ (topt+brr)+ " L "+ 140 + " " +(topt+brr) + " L 120 "+ (topt+brr)+ " L 120 "+ (topt+(brr*2)+1));
+		branch.setAttribute("d","M 120 "+((mltopt)-1)+ " L 120 "+ (mltopt+brr)+ " L "+ 140 + " " +(mltopt+brr) + " L 120 "+ (mltopt+brr)+ " L 120 "+ (mltopt+(brr*2)+1));
 	}
 	branch.setAttribute("stroke-width", tw);
 	branch.setAttribute("stroke", tc);
@@ -400,21 +397,21 @@ function positionli(i, lh, brr, boxwidth, bh){
 	var curli = $("#mylife").find("li").eq(i);
 	checksize();
 	if(i == 0){
-		$(curli).css("top", (((topt)-(bh/2.5))));
+		$(curli).css("top", (((mltopt)-(bh/2.5))));
 	} else {
-		$(curli).css("top", (((topt)-(bh/2.5))));
+		$(curli).css("top", (((mltopt)-(bh/2.5))));
 	}
 	
 }
 
 function addbase(lh, tc, tw, brr){
-	$("#lifeline").css("height", (topt+(lh*2)));
-	$("#mylife").css("height", (topt+(lh*2)));
-	var basevert = document.createElementNS(svgNS, "line");
+	$("#lifeline").css("height", (mltopt+(lh*2)));
+	$("#mylife").css("height", (mltopt+(lh*2)));
+	var basevert = document.createElementNS(mlsvgNS, "line");
 	basevert.setAttribute("id", "basevert");
 	basevert.setAttribute("x1", "120");
 	basevert.setAttribute("x2", "120");
-	basevert.setAttribute("y1", (topt+(brr*2)));
+	basevert.setAttribute("y1", (mltopt+(brr*2)));
 	basevert.setAttribute("y2", (parseInt(basevert.getAttribute("y1")))+lh);
 	basevert.setAttribute("stroke", tc);
 	basevert.setAttribute("stroke-width", tw);
@@ -422,13 +419,13 @@ function addbase(lh, tc, tw, brr){
 	basevert.setAttribute("fill", "none");
 	basevert.setAttribute("type", "line");
 	$("#lifeline").append(basevert);
-	topt = parseInt(basevert.getAttribute("y2"));
-	var basehor = document.createElementNS(svgNS, "line");
+	mltopt = parseInt(basevert.getAttribute("y2"));
+	var basehor = document.createElementNS(mlsvgNS, "line");
 	basehor.setAttribute("id", "basehor");
 	basehor.setAttribute("x1", "90");
 	basehor.setAttribute("x2", "150");
-	basehor.setAttribute("y1", (topt));
-	basehor.setAttribute("y2", (topt));
+	basehor.setAttribute("y1", (mltopt));
+	basehor.setAttribute("y2", (mltopt));
 	basehor.setAttribute("stroke", tc);
 	basehor.setAttribute("stroke-width", tw);
 	basehor.setAttribute("opacity", "1");
