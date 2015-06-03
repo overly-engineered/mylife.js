@@ -1,7 +1,8 @@
 *, *:before, *:after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; }
 
 #mylife {
   width: 100%;
@@ -19,6 +20,7 @@
   #mylife li {
     position: absolute;
     transition: left 1s, right 1s;
+    -webkit-transition: left 1s, right 1s;
     border: 1px solid RGBA(0, 0, 0, 0.2);
     border-radius: 5px;
     margin-top: 10px; }
@@ -52,6 +54,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px; }
+  #mylife h1, #mylife h2, #mylife a {
+    color: #CDCDCD; }
+  #mylife a:hover {
+    color: #181818;
+    text-decoration: underline; }
 
 @media handheld, screen and (min-width: 1300px) {
   #mylife li {
@@ -170,6 +177,17 @@ img {
   max-height: 100%;
   margin-right: 5px;
   margin-bottom: 5px; }
+
+iframe {
+  height: 100%;
+  width: 100%; }
+
+.content svg {
+  width: 100% !important;
+  position: relative !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 10px !important; }
 
 .mlleft {
   float: left; }
