@@ -54,6 +54,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px; }
+  #mylife h1, #mylife h2, #mylife a {
+    color: #CDCDCD; }
+  #mylife a:hover {
+    color: #181818;
+    text-decoration: underline; }
 
 @media handheld, screen and (min-width: 1300px) {
   #mylife li {
@@ -172,6 +177,17 @@ img {
   max-height: 100%;
   margin-right: 5px;
   margin-bottom: 5px; }
+
+iframe {
+  height: 100%;
+  width: 100%; }
+
+.content svg {
+  width: 100% !important;
+  position: relative !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 10px !important; }
 
 .mlleft {
   float: left; }

@@ -20,6 +20,13 @@ img{
 		margin-right:5px;
 		margin-bottom: 5px;
 	}
+	iframe{height:100%;
+			width:100%;}
+	.content svg{width:100% ! important;
+		position:relative ! important;
+		margin-left:auto ! important;
+		margin-right:auto ! important;
+		margin-top:10px ! important;}
 	.mlleft{float:left;}
 	.content{display:block;}
 	.mllink{
