@@ -45,22 +45,7 @@ padding:0; box-sizing:border-box;}
 		opacity: 0.2;
 		border:1px solid #181818;
 		border-radius: 5px;
-	}
-	li span{
-		opacity:1;
-		-webkit-filter: blur(0px);
-		-moz-filter: blur(0px);
-		-o-filter: blur(0px);
-		-ms-filter: blur(0px);
-		filter: blur(0px);
 		position:absolute;
-		top:0;
-		border-radius: 5px;
-		padding: 15px;
-		max-width: 100%;
-		height:100%;
-		font-family: Verdana;
-		overflow:hidden;
 	}
 	svg{
 		width:240px;
@@ -72,11 +57,5 @@ padding:0; box-sizing:border-box;}
 		margin-right:auto;
 		margin-top:10px;
 	}
-	img{
-		max-width:50%;
-		max-height:100%;
-		margin:5px;
-	}
-	.mlleft{float:left;}
-	.mlprimary, .mlsecondary{display:block;}
+	
 }
