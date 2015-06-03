@@ -2,13 +2,21 @@
 <html>
 <head>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="javascripts/mylife.js"></script>
+	<script src="mylife.js"></script>
 	<link href="css/mylife.css" rel="stylesheet"></link>
 </head>
 <body>
+<div>See the Other Types of Branches:
+	<ul>
+		<li style="display:inline;padding:10px;" ><a style="text-decoration:none;" href="demo.html">Circle</a></li>
+		<li style="display:inline;padding:10px;" ><a style="text-decoration:none;" href="arrowdemo.html">Arrow</a></li>
+		<li style="display:inline;padding:10px;" ><a href="#">Date</a></li>
+		<li style="display:inline;padding:10px;" ><a style="text-decoration:none;" href="dashdemo.html">Dash</a></li>
+	</ul>
+</div>
 <div id="mylife">
 	<ul>
-		<li data-date="05/05/1991"><div class="frost"></div><span class="content"><img class="mlleft small" src="img/3.jpg"/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies sapien sem, et dignissim ligula vulputate ac. Morbi quis leo nec urna convallis dignissim. Maecenas tortor nulla, lobortis eu facilisis ac, consectetur eget sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi vel orci. <br><a href="#" class="mllink">See More</a></span></li>
+		<li data-date="05/05/1991"><div class="frost"></div><span class="content"><img class="mlleft small" src="img/3.jpg"/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultricies sapien sem, et dignissim ligula vulputate ac. Morbi quis leo nec urna convallis dignissim. Maecenas tortor nulla, lobortis eu facilisis ac, consectetur eget sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi vel orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi vel orci. <br><a href="#" class="mllink">See More</a></span></li>
 		<li data-date="05/05/1992"><div class="frost"></div><span>2</span></li>
 		<li data-date="05/05/1994"><div class="frost"></div><span>3</span></li>
 		<li data-date="05/05/1998"><div class="frost"></div><span>4</span></li>
@@ -16,6 +24,10 @@
 		<li data-date="05/05/2000"><div class="frost"></div><span>6</span></li>
 		<li data-date="05/05/2005"><div class="frost"></div><span>7</span></li>
 		<li data-date="05/05/2006"><div class="frost"></div><span>8</span></li>
+		<li data-date="05/05/2009"><div class="frost"></div><span>9</span></li>
+		<li data-date="05/05/2010"><div class="frost"></div><span>10</span></li>
+		<li data-date="05/05/2012"><div class="frost"></div><span>11</span></li>
+		<li data-date="05/05/2015"><div class="frost"></div><span>12</span></li>
 	</ul>
 </div>
 <div style="padding:50px; background:#000; color:#fff; height:500px; width:100%;">mylife.js</div>
@@ -24,7 +36,7 @@
 		lineheight : 400, // distance between branches default is 300
 		branchrad : 30, // branchradius default is 20
 		branchwidth : 5, // branch thickness default is 4
-		branchtype : "arrow", // branch type. currently "circle", "arrow" or "date"(see below for extra markup) default is "circle"
+		branchtype : "circle", // branch type. currently "circle", "arrow" or "date"(see below for extra markup) default is "circle"
 		branchfill : "none", // fill color for branches default is none
 		treecolor : "#fff", // tree color default is #181818
 		treewidth : 5, // tree width default is 4
