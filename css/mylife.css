@@ -1,7 +1,8 @@
 *, *:before, *:after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -moz-box-sizing: border-box; }
 
 #mylife {
   width: 100%;
@@ -19,6 +20,7 @@
   #mylife li {
     position: absolute;
     transition: left 1s, right 1s;
+    -webkit-transition: left 1s, right 1s;
     border: 1px solid RGBA(0, 0, 0, 0.2);
     border-radius: 5px;
     margin-top: 10px; }
