@@ -17,15 +17,15 @@ li span{
 img{
 		max-width:50%;
 		max-height:100%;
-		margin:10px;
+		margin-right:5px;
+		margin-bottom: 5px;
 	}
 	.mlleft{float:left;}
 	.content{display:block;}
 	.mllink{
 			color:#181818;
-			width:100%;
+			width:90%;
 			display:block;
-			margin-top:20px;
 			text-align: center;
 			background: #cbcdcf;
   			background-image: -webkit-linear-gradient(top, #cbcdcf, #979899);
@@ -38,6 +38,11 @@ img{
   			border-radius: 15px;
   			padding: 10px 20px 10px 20px;
   			text-decoration: none;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			position: absolute;
 	}
 	.mllink:hover{
 			  background: #abacad;
