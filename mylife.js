@@ -317,10 +317,10 @@ function branches(i, lh, brr, bh, tc, bw, brt, brf, val, tw){
 	} else
 	if(brt == "arrow"){
 		arrowbranch(i, lh, brr, bh, tc, bw, brt, brf);
-	}
+	} else
 	if(brt == "date"){
 		datebranch(i, lh, brr, bh, tc, bw, brt, brf, val);
-	}	
+	} else 
 	if(brt == "dash"){
 		linebranch(i, lh, brr, bh, tc, tw, brt, brf);
 	}
