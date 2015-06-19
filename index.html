@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Mylife.js : An animated timeline for showing off the best of your work.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mylife.js</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/overly-engineered/mylife.js">View on GitHub</a>
+
+          <h1 id="project_title">Mylife.js</h1>
+          <h2 id="project_tagline">An animated timeline for showing off the best of your work.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/overly-engineered/mylife.js/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/overly-engineered/mylife.js/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>An animated timeline for showing off the best of your work.</p>
+
+<p>See the demo <a target="_blank" href="http://overly-engineered.github.io/mylife.js/circledemo.html">here</a> <br></p>
+
+<p>Fully responsive.</p>
+
+<p>Animation optional.</p>
+
+<h2>
+<a id="small-markup" class="anchor" href="#small-markup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Small markup:</h2>
+
+<pre><code>&lt;div id="mylife"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;span class="content"&gt;1&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class="content"&gt;2&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class="content"&gt;3&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class="content"&gt;4&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class="content"&gt;5&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class="content"&gt;6&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>add your text in the span.</p>
+
+<p>add frosted glass effect by including before your span
+<br></p>
+
+<pre><code>&lt;li&gt;&lt;div class="frost"&gt;&lt;/div&gt;&lt;span class="content"&gt;1&lt;/span&gt;&lt;/li&gt;
+</code></pre>
+
+<h2>
+<a id="activate" class="anchor" href="#activate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activate</h2>
+
+<p>Add the function below either at the bottom of the page or in $(document).ready(function({});. Be sure to include jquery before this.</p>
+
+<pre><code>&lt;script&gt;
+    createmylife();
+&lt;/script&gt;
+</code></pre>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features:</h2>
+
+<p>A more customised feel with options:</p>
+
+<pre><code>&lt;script&gt;
+    createmylife({
+        lineheight : 400, // distance between branches default is 300
+        branchrad : 30, // branchradius default is 20
+        branchwidth : 5, // branch thickness default is 4
+        branchtype : "dash", // branch type. currently "circle", "arrow", "date"(see below for extra markup) or "dash" default is "circle"
+        branchfill : "none", // fill color for branches default is none
+        treecolor : "#fff", // tree color default is #181818
+        treewidth : 5, // tree width default is 4
+        animation : true, // disable slide in animations default is true
+        extratop : true, // adds an extra spacer at the top of the tree default is false
+        extratopsize : 200, // sets the size for the extra spacer default is 200
+        title : "mylife.js", // adds title to the top of the tree default is ""
+        titlecolor: "#fff" // title color default is #fff
+    });
+&lt;/script&gt;
+</code></pre>
+
+<p>For Date Branch use the "data-date" attr in your markup</p>
+
+<pre><code>&lt;li data-date="05/05/1991"&gt;&lt;div class="frost"&gt;&lt;/div&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+</code></pre>
+
+<p>CSS and SCSS files included use whatever takes your fancy.</p>
+
+<p>Minified files to come.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mylife.js maintained by <a href="https://github.com/overly-engineered">overly-engineered</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-62624143-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
