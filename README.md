@@ -32,7 +32,7 @@ add frosted glass effect by including before your span
 <li><div class="frost"></div><span>1</span></li>
 ```
 <h2>Activate</h2>
-Add the function below either at the bottom of the page or in $(document).ready(function({});. Be sure to include jquery before this.
+Add the function below either at the bottom of the page or in `$(document).ready(function({});`. Be sure to include jquery before this.
 ```
 <script>
 	createmylife();
