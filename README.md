@@ -10,7 +10,7 @@ Animation is optional.
 
 <small>Works best with some space above not as the first element if using animtion</small>
 
-<h2>Small markup:</h2>
+## Small markup:
 
 ```
 <div id="mylife">
@@ -31,14 +31,14 @@ add frosted glass effect by including before your span
 ```
 <li><div class="frost"></div><span>1</span></li>
 ```
-<h2>Activate</h2>
+## Activate
 Add the function below either at the bottom of the page or in `$(document).ready(function({});`. Be sure to include jquery before this.
 ```
 <script>
 	createmylife();
 </script>
 ```
-<h2>Features:</h2>
+## Features:
 A more customised feel with options:
 ```
 <script>
